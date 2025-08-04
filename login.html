@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+</head>
+<body>
+    <header>
+        <section class="head-container">
+            <h1 class="top-bar"><a href="Homepage.html">HW</a></h1>
+            <!-- <nav>
+                <ul class="nav-bar">
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav> -->
+        </section>
+    </header>
+    
+    <section class="login-field">
+        <div class="login-container">
+            <h2>Login as</h2>
+            <div class="tabs">
+                <button class="tab active" onclick="showForm('patient')">Patient</button>
+                <button class="tab" onclick="showForm('doctor')">Doctor</button>
+            </div>
+
+            <div id="patient-form" class="form-section">
+                <label>Email</label>
+                <input type="email" id="patient-email" placeholder="Enter patient email">
+                <label>Password</label>
+                <div class="password-field">
+                    <input type="password" id="patient-password" placeholder="Enter password">
+                    <span class="toggle-eye" onclick="togglePassword('patient-password', this)">
+                        <i class="fa-regular fa-eye" style="cursor: pointer;"></i>
+                    </span>
+                </div>
+                <button class="login-btn">Log in as Patient</button>
+                <a href="#" class="recovery">password recovery</a>
+                <p>Need to Register? <a href="Patient-Register.html">sign up</a></p>
+            </div>
+
+            <div id="doctor-form" class="form-section hidden">
+                <label>Email</label>
+                <input type="email" id="doctor-email" placeholder="Enter doctor email">
+                <label>Password</label>
+                <div class="password-field">
+                    <input type="password" id="doctor-password" placeholder="Enter password">
+                    <span class="toggle-eye" onclick="togglePassword('doctor-password',this)">
+                        <i class="fa-regular fa-eye" style="cursor: pointer;"></i>
+                    </span>
+                </div>
+
+                <button class="login-btn">Log in as Doctor</button>
+                <div class="error" style="color: red; margin-top: 10px;"></div>
+                <a href="#" class="recovery">password recovery</a>
+                <p>Need to Register? <a href="doctor-register.html">sign up</a></p>
+            </div>
+        </div>
+    </section>
+<script src="login.js"></script>
+</body>
+</html>
