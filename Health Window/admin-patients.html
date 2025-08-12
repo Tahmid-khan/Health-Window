@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin • Patients</title>
+
+  <!-- Internal CSS (same look as Doctors tab) -->
+  <style>
+    :root{
+      --green-gradient: linear-gradient(to bottom, #00c97d, #00b3a4);
+      --light-bg:#f7f9fc; --text:#333; --white:#fff; --muted:#6b7280;
+      --radius:12px; --shadow:0 2px 10px rgba(0,0,0,.08); --sidebar:220px;
+      --brand:#00b3a4; --danger:#ef4444; --danger-600:#dc2626; --ok:#16a34a;
+      --font:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--light-bg);color:var(--text);font-family:var(--font)}
+    .wrap{display:grid;grid-template-columns:var(--sidebar) 1fr;min-height:100vh}
+     .sidebar{
+      width:var(--sidebar);background:var(--green-gradient);color:#fff;
+      padding:20px;display:flex;flex-direction:column;align-items:center
+    }
+    .sb-head{text-align:center;margin-bottom:30px}
+    .avatar{width:70px;height:70px;border-radius:50%;background:#fff;color:#00b391;
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;margin:auto}
+    .sb-name{margin-top:10px;font-weight:700}
+    .menu{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+    .menu a{display:block;color:#e6fffb;text-decoration:none;padding:10px 12px;border-radius:10px}
+    .menu a.active,.menu a:hover{background:rgba(255,255,255,.15)}
+    main{padding:28px}
+    .page-title{font-size:28px;font-weight:800;margin:0 0 6px}
+    .page-sub{color:var(--muted);margin-bottom:18px}
+    .toolbar{display:flex;gap:10px;margin-bottom:18px}
+    .search{flex:1;position:relative}
+    .search input{width:100%;padding:12px 14px;border:1px solid #e7e7e7;border-radius:12px;background:#fff;outline:none}
+    .btn{background:#fff;border:1px solid #e7e7e7;padding:10px 14px;border-radius:12px;cursor:pointer}
+    .btn:hover{background:#f3f4f6}
+    .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card .head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #eef0f4}
+    .card .title{font-weight:700}
+    .status{font-size:13px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:14px 18px;border-bottom:1px solid #eef0f4}
+    th{color:#6b7280;text-align:left;font-weight:600;background:#fafbfc}
+    .actions{display:flex;gap:8px}
+    .pill{padding:.25rem .6rem;border-radius:999px;font-size:12px;border:1px solid #e7e7e7;background:#fff}
+    .danger{color:#b91c1c;border-color:#f1c4c4;background:#fff5f5}
+    .empty{color:var(--muted);text-align:center;padding:26px}
+    .badge{padding:.22rem .55rem;border-radius:999px;font-size:11px}
+    .badge.ok{background:#e8fff1;color:#065f46;border:1px solid #b8f3cc}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sb-head">
+        <div class="avatar">HW</div>
+        <div class="sb-name">Admin</div>
+      </div>
+      <ul class="menu">
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="admin-doctors.html">Doctors</a></li>
+        <li><a class="active" href="admin-patients.html">Patients</a></li>
+        <li><a href="admin-appointments.html">Appointments</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <main>
+      <h1 class="page-title">Patients</h1>
+      <div class="page-sub">Search, view and manage registered patients</div>
+
+      <div class="toolbar">
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Search by name, email, phone..."/>
+        </div>
+        <button id="refreshBtn" class="btn">Refresh</button>
+      </div>
+
+      <section class="card">
+        <div class="head">
+          <div class="title">Patients List</div>
+          <div id="statusText" class="status"></div>
+        </div>
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:220px">Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>DOB</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="patientsBody">
+              <tr><td colspan="6" class="empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Internal JS -->
+  <script>
+    // API
+    const API_BASE = 'http://localhost:5000/api/admin/patients';
+
+    // Elements
+    const els = {
+      tbody: document.getElementById('patientsBody'),
+      search: document.getElementById('searchInput'),
+      refresh: document.getElementById('refreshBtn'),
+      status: document.getElementById('statusText')
+    };
+
+    // Helpers
+    const fmtDate = (d) => {
+      if (!d) return '';
+      const dt = new Date(d);
+      if (isNaN(dt)) return d; // show raw if server already formatted
+      return dt.toLocaleDateString();
+    };
+
+    const escapeHtml = (s='') => String(s)
+      .replaceAll('&','&amp;').replaceAll('<','&lt;')
+      .replaceAll('>','&gt;').replaceAll('"','&quot;')
+      .replaceAll("'",'&#039;');
+
+    const setEmpty = (msg) => {
+      els.tbody.innerHTML = `<tr><td colspan="6" class="empty">${escapeHtml(msg)}</td></tr>`;
+    };
+
+    // Render table rows
+    function renderRows(list){
+      if (!Array.isArray(list) || list.length === 0) {
+        setEmpty('No patients found');
+        return;
+      }
+      els.tbody.innerHTML = list.map(p => `
+        <tr data-id="${p.id}">
+          <td>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <div style="font-weight:600">${escapeHtml(p.name || '')}</div>
+              <div class="muted">${p.id ? 'ID: '+p.id : ''}</div>
+            </div>
+          </td>
+          <td>${escapeHtml(p.email || '')}</td>
+          <td>${escapeHtml(p.phone || '')}</td>
+          <td>${escapeHtml(fmtDate(p.dob))}</td>
+          <td><span class="badge ok">${escapeHtml(fmtDate(p.created_at))}</span></td>
+          <td>
+            <div class="actions">
+              <button class="btn danger" onclick="deletePatient(${Number(p.id)})">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Load list
+    async function loadPatients(search=''){
+      try{
+        els.status.textContent = 'Loading…';
+        setEmpty('Loading…');
+        const url = new URL(API_BASE);
+        if (search) url.searchParams.set('search', search);
+
+        const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }});
+        if (!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        renderRows(data);
+        els.status.textContent = `Showing ${data.length} patient${data.length!==1?'s':''}`;
+      }catch(err){
+        console.error(err);
+        els.status.textContent = 'Failed to load patients';
+        setEmpty('Failed to load patients');
+      }
+    }
+
+    // Delete item
+    async function deletePatient(id){
+      if (!confirm('Delete this patient and related data?')) return;
+      const row = els.tbody.querySelector(`tr[data-id="${id}"]`);
+      const placeholder = document.createElement('tr');
+      placeholder.innerHTML = `<td colspan="6" class="empty">Deleting…</td>`;
+      if (row) row.replaceWith(placeholder);
+
+      try{
+        const res = await fetch(`${API_BASE}/${id}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (!res.ok) throw new Error('HTTP '+res.status);
+        // remove placeholder
+        placeholder.remove();
+        // if nothing left, show message
+        if (!els.tbody.children.length) setEmpty('No patients found');
+      }catch(err){
+        console.error(err);
+        if (placeholder.isConnected) placeholder.replaceWith(row);
+        alert('Failed to delete patient.');
+      }
+    }
+    window.deletePatient = deletePatient; // expose for inline onclick
+
+    // Search (debounced)
+    let t=null;
+    els.search.addEventListener('input', e=>{
+      clearTimeout(t);
+      t=setTimeout(()=>loadPatients(e.target.value.trim()), 350);
+    });
+
+    // Refresh
+    els.refresh.addEventListener('click', ()=>{
+      els.search.value='';
+      loadPatients('');
+    });
+
+    // First load
+    loadPatients();
+    const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    try { localStorage.removeItem('hw_admin'); sessionStorage.clear(); } catch {}
+    location.replace('admin-login.html'); // adjust if file is elsewhere
+  });
+}
+
+  </script>
+</body>
+</html>

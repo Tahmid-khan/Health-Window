@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Window</title>
+    <link rel="stylesheet" href="homepage.css">
+    <script src="homepage.js"></script>
+    <!-- linking swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+
+</head>
+<body>
+    <!-- Header Starts here -->
+    <header>
+        <section class="head-container">
+            <h1 class="top-bar"><a href="Homepage.html">HW</a></h1>
+            <nav>
+                <ul class="nav-bar">
+                    <li><a href="patient-register.html" id="registerBtn">Register</a></li>
+                    <li><a href="login.html" id="loginBtn">Login</a></li>
+                    <li><a href="patient-profile.html" id="profileBtn" style="display: none;">Profile</a></li>
+                    <li><a href="login.html" id="logoutBtn" style="display: none;">Logout</a></li>
+                </ul>
+            </nav>
+        
+        </section>
+    <!-- Header Ends here -->
+
+    <!-- hero section starts -->
+        <section class="hero">
+            <p class="welcome">Welcome to</p>
+            <h1><span>HEALTH WINDOW</span></h1>
+            <p class="description">
+                A simple, innovative way to book appointments with your<br />
+                local doctor or healthcare professionals.
+            </p>
+
+        <!-- Location Field -->
+            <section id="form">
+                <!-- Location Row -->
+                <div class="search-doctor">
+                    <div class="input-wrapper icon-inside">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <select name="location" id="location-select">
+                            <option value="" disabled selected hidden>Enter your location</option>
+                            <option value="dhaka">Dhaka</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="rangpur">Rangpur</option>
+                            <option value="chottogram">Chottogram</option>
+                            <option value="sylhet">Sylhet</option>
+                        </select>
+                        <span class="custom-arrow">&#9662;</span>
+                    </div>
+                </div>
+
+    <!-- Specialties Row -->
+                <div class="search-doctor">
+                    <div class="input-wrapper icon-inside">
+                        <i class="fa-solid fa-user-nurse"></i>
+                        <select id="specialties">
+                            <option id="color" disabled selected hidden>Doctor, Problem</option>
+                            <option value="primary Care">Primary Care</option>
+                            <option value="eye Doctor">Eye Doctor</option>
+                            <option value="dentist">Dentist</option>
+                            <option value="ent">ENT</option>
+                            <option value="dermatologist">Dermatologist</option>
+                            <option value="neurologist">Neurologist</option>
+                            <option value="cardiologist">Cardiologist</option>
+                            <option value="psychiatrist">Psychiatrist</option>
+                            <option value="gynecologist">Gynecologist</option>
+                        </select>
+                    </div>
+
+                    <div class="input-wrapper icon-inside">
+                        <input type="date" />
+                    </div>
+
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+            </section>
+
+        </section>
+    </header>
+
+    <!-- hero section ends -->
+
+    <!-- cards section starts here -->
+
+    <section class="card-container swiper">
+        <div class="card-wrapper">
+            <ul class="card-list swiper-wrapper">
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/primary care.png" alt="Primary Care" class="card-image">
+                        <h2 class="card-title">Primary Care</h2>
+                        <p class="badge">Annual health check-up? not feeling well?</p>
+                        <button class="card-search-btn" data-specialty="Primary Care">Find Primary Care Doctor</button>
+
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/dentist.png" alt="Dentist" class="card-image">
+                        <h2 class="card-title">Dentist</h2>
+                        <p class="badge">Toothache? Need a check-up?</p>
+                        <button class="card-search-btn" data-specialty="Dentist">Find Dentist</button>
+
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/darmatologist.png" alt="Dermatologist" class="card-image">
+                        <h2 class="card-title">Dermatologist</h2>
+                        <p class="badge">Skin issues? Rashes? Acne?</p>
+                        <button class="card-search-btn" data-specialty="Dermatologist">Find Dermatologist</button>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/cardiologist.png" alt="Cardiologist" class="card-image">
+                        <h2 class="card-title">Cardiologist</h2>
+                        <p class="badge">Heart issues? High blood pressure?</p>
+                        <button class="card-search-btn" data-specialty="Cardiologist">Find Cardiologist</button>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/ent.png" alt="ENT Specialist" class="card-image">
+                        <h2 class="card-title">ENT Specialist</h2>
+                        <p class="badge">Hearing issues? Sinus problems?</p>
+                        <button class="card-search-btn" data-specialty="ENT">Find ENT Specialist</button>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/psycratist.png" alt="Psychiatrist" class="card-image">
+                        <h2 class="card-title">Psychiatrist</h2>
+                        <p class="badge">Mental health concerns? Need someone to talk to?</p>
+                        <button class="card-search-btn" data-specialty="Psychiatrist">Find Psychiatrist</button>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/eye doctor.png" alt="Eye Doctor" class="card-image">
+                        <h2 class="card-title">Eye Doctor</h2>
+                        <p class="badge">Vision problems? Eye strain?</p>
+                        <button class="card-search-btn" data-specialty="Eye Doctor">Find Eye Doctor</button>
+                    </div>
+                </li>
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/gynocologist.png" alt="Gynecologist" class="card-image">
+                        <h2 class="card-title">Gynecologist</h2>
+                        <p class="badge">Women's health issues? Need a check-up?</p>
+                        <button class="card-search-btn" data-specialty="Gynecologist">Find Gynecologist</button>
+                    </div>
+                </li>
+                
+                <li class="card-item swiper-slide">
+                    <div class="card-link">
+                        <img src="img/view all.png" alt="view all" class="card-image">
+                        <h2 class="card-title">Other Doctors</h2>
+                        <p class="badge">Explore all available doctors and services?</p>
+                        <button onclick="location.href='specialists.html'">View All</button>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
+    <!-- linking swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="homepage.js"></script>
+
+
+    <!-- cards section ends here -->
+
+    <!-- Info section starts here -->
+
+    <section class="info-container">
+        <div class="info">
+            <h2 class="info-title">Simple and Easy</h2>
+            <p class="info-description"><strong>Health Window</strong> is committed to helping patients to get an appointment with the <strong>best doctor</strong>  for them in just a few clicks. We make finding the best doctor easy, yet informative and tenable. You can search your local area or an area of your choice reviews and other important items. <strong>Health Window</strong> also helps you schedule last minute and immediate appointments, so you can get the help you need when you need it.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="features-box">
+                <i class="fa-regular fa-clock"></i>
+                <div>
+                    <h3>Easy Appoinments</h3>
+                    <p>Choose the time for a visit that works best with your schedule</p>
+                </div>  
+            </div>
+            <div class="features-box">
+                <i class="fa-regular fa-star"></i>
+                <div>
+                    <h3>Real Reviews</h3>
+                    <p>Check doctors reviews from REAL patients</p>
+                </div>  
+            </div>
+            <div class="features-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <div>
+                    <h3>Find the Right Doctor</h3>
+                    <p>Search by condition, procedure, or symptom to find the perfect doctor for your concern</p>
+                </div>  
+            </div>
+            <div class="features-box">
+                <i class="fa-solid fa-shield-heart"></i>
+                <div>
+                    <h3>Instant Booking</h3>
+                    <p>Book appointments instantly without waiting</p>
+                </div>  
+            </div>
+        </div>
+       
+    </section>
+
+    <!-- Info section ends here -->
+
+    <!-- Doctors Sign Up Section starts here -->
+    <section class="doctor-signup">
+        <div class="signup-content">
+            <h3>Are you a doctor? <br> <span>Sign up today!</span></h3>
+            <ul class="features">
+                <li>Fill time slot vacancies</li>
+                <li>Booking calendar with reminders</li>
+                <li>Patient cards with notes</li>
+                <li>Private account for your office staff</li>
+                <li>Management for multiple offices</li>
+            </ul>
+            <button class="signup-button"><a href="doctor-register.html">Sign Up as a Doctor </a></button>
+
+        </div>
+    </section>
+
+    
+    <!-- Doctors Sign Up Section ends here -->
+
+    <!-- Latest News Section starts here -->
+    <section class="latest-news-section">
+        <div class="news-heading">
+            <h2>Stay Informed:</h2>
+            <h3>Latest Disease Alerts & Health News</h3>
+        </div>
+
+        <div class="news-cards">
+            <div class="news-card">
+                <p class="date">July 14, 2025</p>
+                <div class="icon red"><i class="fas fa-mosquito"></i></div>
+                <h4>Dengue Alert in Dhaka</h4>
+                <p class="desc">Health authorities have reported a surge in dengue cases. Avoid mosquito bites and stay hydrated.</p>
+            </div>
+
+            <div class="news-card">
+                <p class="date">July 12, 2025</p>
+                <div class="icon blue"><i class="fas fa-virus"></i></div>
+                <h4>Flu Season Returns</h4>
+                <p class="desc">Flu vaccines are now available. Learn symptoms and prevention tips for this flu season.</p>
+            </div>
+
+            <div class="news-card">
+                <p class="date">July 10, 2025</p>
+                <div class="icon orange"><i class="fas fa-triangle-exclamation"></i></div>
+                <h4>COVID-19 Variant Update</h4>
+                <p class="desc">A new Omicron subvariant has been detected. Stay informed about possible risks.</p>
+            </div>
+        </div>
+
+        <div class="news-button">
+            <button onclick="window.location.href='https://www.who.int/emergencies/disease-outbreak-news'">View All News</button>
+
+        </div>
+    </section>
+
+
+
+    <!-- Latest News Section ends here -->
+    <!-- Footer starts here -->
+    <footer class="main-footer">
+        <div class="specialties">
+            <h3>Popular doctors specialties</h3>
+            <div class="specialties-columns">
+                <ul>
+                    <li><a href="specialists.html?specialty=Primary%20Care">Primary Care</a></li>
+                    <li><a href="specialists.html?specialty=Dermatologist">Dermatologist</a></li>
+                    <li><a href="specialists.html?specialty=Gynecologist">Gynecologist</a></li>
+                    <li><a href="specialists.html?specialty=Dentist">Dentist</a></li>
+                    <li><a href="specialists.html?specialty=Eye%20Doctor">Eye Doctor</a></li>
+                    <li><a href="specialists.html?specialty=ENT">ENT</a></li>
+                    <li><a href="specialists.html?specialty=Cardiologist">Cardiologist</a></li>
+                    <li><a href="#">Breast Surgeon</a></li>
+                    <li><a href="#">Colorectal Surgeon</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Pediatrician</a></li>
+                    <li><a href="#">Plastic Surgeon</a></li>
+                    <li><a href="#">Urologist</a></li>
+                    <li><a href="#">Psychiatrist</a></li>
+                    <li><a href="#">Gastroenterologist</a></li>
+                    <li><a href="#">Cardiologist</a></li>
+                    <li><a href="#">Neurologist</a></li>
+                    <li><a href="#">Orthopedic Surgeon</a></li>
+                    <li><a href="#">Ophthalmologist</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Optometrist</a></li>
+                    <li><a href="#">Pulmonologist</a></li>
+                    <li><a href="#">Nephrologist</a></li>
+                    <li><a href="#">Chiropractor</a></li>
+                    <li><a href="#">Infectious Disease</a></li>
+                    <li><a href="#">Physical Therapist</a></li>
+                    <li><a href="#">Psychologist</a></li>
+                    <li><a href="#">Pediatric Surgeon</a></li>
+                    <li><a href="specialists.html">view all..</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p><a href="privacy-policy.html">Privacy policy</a></p>
+            <p><a href="#">Terms & Conditions</a></p>
+            <p><a href="#">Contact us</a></p>
+        </div>
+    </footer>
+
+    <!-- Footer ends here -->
+
+</body>
+</html>
+

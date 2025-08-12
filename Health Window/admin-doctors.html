@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin • Doctors</title>
+  <!-- Inline CSS to match your admin-dashboard look -->
+  <style>
+    :root{
+      --green-gradient: linear-gradient(to bottom, #00c97d, #00b3a4);
+      --light-bg:#f7f9fc; --text:#333; --white:#fff; --muted:#6b7280;
+      --radius:12px; --shadow:0 2px 10px rgba(0,0,0,.08); --sidebar:220px;
+      --brand:#00b3a4; --danger:#ef4444; --danger-600:#dc2626; --ok:#16a34a;
+      --font:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--light-bg);color:var(--text);font-family:var(--font)}
+    .wrap{display:flex;min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      width:var(--sidebar);background:var(--green-gradient);color:#fff;
+      padding:20px;display:flex;flex-direction:column;align-items:center
+    }
+    .sb-head{text-align:center;margin-bottom:30px}
+    .avatar{width:70px;height:70px;border-radius:50%;background:#fff;color:#00b391;
+      display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;margin:auto}
+    .sb-name{margin-top:10px;font-weight:700}
+    .menu{list-style:none;padding:0;margin:0;width:100%}
+    .menu li{margin:8px 0}
+    .menu a{
+      display:block;text-decoration:none;color:#fff;padding:10px 16px;border-radius:10px;
+      transition:background .2s
+    }
+    .menu a:hover,.menu a.active{background:rgba(255,255,255,.22)}
+    /* Main */
+    .main{flex:1;padding:28px}
+    .page-head h2{margin:0 0 4px 0}
+    .page-head p{margin:0;color:var(--muted)}
+    .toolbar{
+      margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap
+    }
+    .search{
+      display:flex;align-items:center;background:var(--white);border-radius:10px;
+      box-shadow:var(--shadow);padding:8px 12px;flex:1;min-width:260px
+    }
+    .search input{
+      border:0;outline:0;flex:1;font-size:14px;background:transparent
+    }
+    .btn{
+      border:0;border-radius:10px;padding:10px 14px;background:#0ea5e9;color:#fff;
+      font-weight:600;cursor:pointer;box-shadow:var(--shadow)
+    }
+    .btn:hover{filter:brightness(.95)}
+    .btn-danger{background:var(--danger)}
+    .btn-danger:hover{background:var(--danger-600)}
+    .btn-ghost{background:#e5e7eb;color:#111827}
+    /* Card + Table */
+    .card{
+      background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+      margin-top:18px;overflow:hidden
+    }
+    .card-head{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 18px;border-bottom:1px solid #eef2f7
+    }
+    .card-head h3{margin:0;font-size:16px}
+    .status-text{color:#9ca3af;font-size:14px}
+    .table-wrap{overflow:auto}
+    table{width:100%;border-collapse:collapse}
+    thead th{
+      text-align:left;font-size:13px;color:#6b7280;background:#f9fafb;padding:12px 14px;
+      border-bottom:1px solid #eef2f7;white-space:nowrap
+    }
+    tbody td{padding:12px 14px;border-bottom:1px solid #f1f5f9;font-size:14px}
+    tbody tr:hover{background:#fafafa}
+    .badge{
+      display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700
+    }
+    .badge.ok{background:#ecfdf5;color:#065f46}
+    .badge.pending{background:#fff7ed;color:#9a3412}
+    .empty{padding:26px;color:#6b7280}
+    @media (max-width: 820px){ .sidebar{position:sticky; top:0; height:100vh} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sb-head">
+        <div class="avatar">HW</div>
+        <div class="sb-name">Admin</div>
+      </div>
+      <ul class="menu">
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a class="active" href="admin-doctors.html">Doctors</a></li>
+        <li><a href="admin-patients.html">Patients</a></li>
+        <li><a href="admin-appointments.html">Appointments</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+
+      </ul>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="page-head">
+        <h2>Doctors</h2>
+        <p>Search, view and manage registered doctors</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Search by name, email, specialty..." />
+        </div>
+        <button id="refreshBtn" class="btn btn-ghost">Refresh</button>
+      </div>
+
+      <section class="card">
+        <div class="card-head">
+          <h3>Doctors List</h3>
+          <span id="statusText" class="status-text">Loading…</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="min-width:160px">Name</th>
+                <th>Email</th>
+                <th>Specialty</th>
+                <th>Qualification</th>
+                <th>Experience</th>
+                <th>Status</th>
+                <th style="min-width:110px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="doctorTbody">
+              <tr><td colspan="7" class="empty">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Inline JS -->
+  <script>
+    const API_BASE = 'http://localhost:5000/api/admin/doctors'; // your backend (port 5000)
+
+    const els = {
+      search: document.getElementById('searchInput'),
+      refresh: document.getElementById('refreshBtn'),
+      tbody: document.getElementById('doctorTbody'),
+      status: document.getElementById('statusText')
+    };
+
+    function rowTpl(d) {
+      const statusClass = d.status && d.status.toLowerCase() === 'approved' ? 'ok' : 'pending';
+      const exp = d.experience_years != null ? d.experience_years + ' yrs' : (d.experience || '-');
+      return `
+        <tr data-id="${d.id}">
+          <td>${escapeHtml(d.name || '-')}</td>
+          <td>${escapeHtml(d.email || '-')}</td>
+          <td>${escapeHtml(d.specialty || '-')}</td>
+          <td>${escapeHtml(d.qualification || '-')}</td>
+          <td>${escapeHtml(exp)}</td>
+          <td><span class="badge ${statusClass}">${escapeHtml(d.status || 'Pending')}</span></td>
+          <td>
+            <button class="btn btn-danger" data-action="delete" data-id="${d.id}">Delete</button>
+          </td>
+        </tr>`;
+    }
+
+    function setEmpty(msg){
+      els.tbody.innerHTML = `<tr><td colspan="7" class="empty">${msg}</td></tr>`;
+    }
+
+    async function loadDoctors(search = '') {
+      try {
+        els.status.textContent = 'Loading…';
+        setEmpty('Loading…');
+        const url = new URL(API_BASE);
+        if (search) url.searchParams.set('search', search);
+        const res = await fetch(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            // Include auth if you use it:
+            // 'Authorization': 'Bearer ' + (localStorage.getItem('token') || '')
+          },
+          
+        });
+        if (!res.ok) throw new Error('Failed to load doctors');
+        const data = await res.json();
+        const list = Array.isArray(data) ? data : (data.doctors || []);
+        if (!list.length) {
+          setEmpty('No doctors found.');
+          els.status.textContent = 'No results';
+          return;
+        }
+        els.tbody.innerHTML = list.map(rowTpl).join('');
+        els.status.textContent = `${list.length} result${list.length>1?'s':''}`;
+      } catch (err) {
+        console.error(err);
+        els.status.textContent = 'Failed to load doctors';
+        setEmpty('Failed to load doctors');
+      }
+    }
+
+    async function deleteDoctor(id){
+      if (!id) return;
+      if (!confirm('Delete this doctor permanently?')) return;
+      try {
+        const res = await fetch(`${API_BASE}/${encodeURIComponent(id)}`, {
+          method:'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            
+          },
+          
+        });
+        if (!res.ok) {
+          const t = await res.text();
+          throw new Error(t || 'Delete failed');
+        }
+        // remove row
+        const row = els.tbody.querySelector(`tr[data-id="${CSS.escape(String(id))}"]`);
+        if (row) row.remove();
+        if (!els.tbody.children.length) setEmpty('No doctors found.');
+      } catch (e) {
+        alert('Failed to delete doctor.');
+        console.error(e);
+      }
+    }
+
+    // Delegated click for delete buttons
+    els.tbody.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-action="delete"]');
+      if (!btn) return;
+      deleteDoctor(btn.dataset.id);
+    });
+
+    // Debounced search
+    let timer;
+    els.search.addEventListener('input', ()=>{
+      clearTimeout(timer);
+      timer = setTimeout(()=> loadDoctors(els.search.value.trim()), 300);
+    });
+
+    els.refresh.addEventListener('click', ()=> loadDoctors(els.search.value.trim()));
+
+    // util
+    function escapeHtml(s=''){
+      return String(s)
+        .replaceAll('&','&amp;').replaceAll('<','&lt;')
+        .replaceAll('>','&gt;').replaceAll('"','&quot;')
+        .replaceAll("'",'&#039;');
+    }
+
+    // first load
+    loadDoctors();
+    const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    try { localStorage.removeItem('hw_admin'); sessionStorage.clear(); } catch {}
+    location.replace('admin-login.html'); // adjust if file is elsewhere
+  });
+}
+
+  </script>
+</body>
+</html>

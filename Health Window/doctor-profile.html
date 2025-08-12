@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Profile - Health Window</title>
+  <link rel="stylesheet" href="doctor-profile.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="profile-card">
+    <div class="top-section">
+      <img src="img/female doctor image.png" alt="Doctor Avatar" class="avatar">
+      <div class="info">
+        <h2 id="doctorName"></h2>
+        <div class="contact-section">
+        <p><strong>Email: </strong> <span id="doctorEmail"></span></p>
+        <p><strong>Phone: </strong> <span id="doctorPhone"></span></p>
+        <p><strong>Role: </strong> <span id="doctorRole"></span></p>
+        </div>
+        <p class="subtitle" id="qualification"></p>
+        <p class="speciality" id="specialty"></p>
+        <p class="experience" id="experience"></p>
+        <p id="bio"></p>
+
+      </div>
+    </div>
+    <!-- Display rows for clinic info -->
+    <p><strong>Clinic:</strong>
+      <span id="clinicNameDisplay">Unknown · Clinic Name</span>
+      <button id="editClinicBtn" class="link-btn" style="display:none; margin-left:8px;">Change</button>
+    </p>
+
+    <p><strong>Address:</strong>
+      <span id="clinicAddressDisplay">Unknown · Address</span>
+    </p>
+
+ <!-- Editable form (shown only when needed) -->
+    <div id="clinicEditForm" style="margin-top:14px;">
+      <label for="clinicName">Clinic Name</label>
+      <input type="text" id="clinicName" name="clinic_name" />
+
+      <label for="address" style="margin-top:10px;">Clinic Address</label>
+      <input type="text" id="address" name="address" />
+
+      <div style="margin-top:12px; display:flex; gap:10px;">
+        <button id="saveProfileBtn">Save Profile</button>
+        <button id="cancelEditBtn" type="button" style="display:none;">Cancel</button>
+      </div>
+    </div>
+
+
+
+    <div id="appointmentsContainer"></div>
+
+    
+
+    <button onclick="logout()">Log Out</button>
+  </div>
+
+  <script src="doctor-profile.js"></script>
+</body>
+</html>

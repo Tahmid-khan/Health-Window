@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-Specialists</title>
+    <link rel="stylesheet" href="specialists.css">
+    <script src="specialists.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <!-- header starts here -->
+    <header>
+        <section class="head-container">
+            <h1 class="top-bar"><a href="Homepage.html">HW</a></h1>
+            <nav>
+                <ul class="nav-bar">
+                    <li id="profileLink" style="display: none;"><a href="patient-profile.html">Profile</a></li>
+                    <li id="logoutLink" style="display: none;"><a href="login.html" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section id="form">
+                <!-- Location Row -->
+                <div class="search-doctor">
+                    <div class="input-wrapper icon-inside">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <select name="location" id="location-select">
+                            <option value="" disabled selected hidden>Enter your location</option>
+                            <option value="dhaka">Dhaka</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="rangpur">Rangpur</option>
+                            <option value="chottogram">Chottogram</option>
+                            <option value="sylhet">Sylhet</option>
+                        </select>
+                        
+                    </div>
+                </div>
+
+    <!-- Specialties Row -->
+                <div class="search-doctor">
+                    <div class="input-wrapper icon-inside">
+                        <i class="fa-solid fa-user-nurse"></i>
+                        <select id="specialties">
+                            <option id="color" disabled selected hidden>Doctor, Problem</option>
+                            <option value="primary Care">Primary Care</option>
+                            <option value="eye Doctor">Eye Doctor</option>
+                            <option value="dentist">Dentist</option>
+                            <option value="ent">ENT</option>
+                            <option value="dermatologist">Dermatologist</option>
+                            <option value="neurologist">Neurologist</option>
+                            <option value="cardiologist">Cardiologist</option>
+                            <option value="psychiatrist">Psychiatrist</option>
+                            <option value="gynecologist">Gynecologist</option>
+                        </select>
+                    </div>
+
+                    <div class="input-wrapper icon-inside">
+                        <input type="date" />
+                    </div>
+
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+            </section>
+    </header>
+    <!-- header ends here -->
+
+    <!-- main section starts here -->
+     <!-- <section class="doctor-list" id="doctorList"></section> -->
+    <section class="doctor-list">
+        <div class="doctor-card" data-specialty="Dentist" data-location="Kolkata" data-slots="12:00 AM, 1:00 PM, 2:00 PM, 3:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Sumit Khatore" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name"><a href="profile.html">Dr. Sumit Khatore</a></h3>
+                    <p class="specialty">Dentist</p>
+                    <p class="experience">13 years experience overall</p>
+                    <p class="location"><strong>Beliaghata, Kolkata</strong> · Divine Dental Hub </p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Dentist" data-location="Kolkata" data-slots="10:00 AM, 11:30 AM, 2:00 PM, 4:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Sanket Chakraverty" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Sanket Chakraverty</h3>
+                    <p class="specialty">Dentist, Prosthodontist, Implantologist, Dental Surgeon</p>
+                    <p class="experience">16 years experience overall</p>
+                    <p class="location"><strong>Rajarhat, Kolkata</strong> · Teeth Care Multispeciality Dental Clinic</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Primary Care" data-location="Kolkata" data-slots="9:00 AM, 10:30 AM, 1:00 PM, 3:00 PM, 4:00 PM, 5:00 PM, 6:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Dr. Gita Das Banik" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Gita Das Banik</h3>
+                    <p class="specialty">Primary Care</p>
+                    <p class="experience">28 years experience overall</p>
+                    <p class="location"><strong>Bangur Avenue, Kolkata</strong> · Dr. Gita Das Banik Clinic</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Primary Care" data-location="Kolkata" data-slots="10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM, 2:00 PM, 3:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Rajarshi Dutta" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Rajarshi Dutta</h3>
+                    <p class="specialty">Primary Care</p>
+                    <p class="experience">13 years experience overall</p>
+                    <p class="location"><strong>Salt Lake, Kolkata</strong> · Dr. Rajarshi Dutta's Clinic </p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Cardiologist" data-location="Kolkata" data-slots="10:00 AM, 11:30 AM, 2:00 PM, 4:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Ranjan Kumar Sharma" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Ranjan Kumar Sharma</h3>
+                    <p class="specialty">Cardiologist</p>
+                    <p class="experience">37 years experience overall</p>
+                    <p class="location"><strong>Beliaghata, Kolkata</strong> · Techno India Dama Healthcare & Medical Centre </p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Cardiologist" data-location="Kolkata" data-slots="8:00 AM, 9:30 AM, 11:00 AM, 1:00 PM, 3:00 PM, 5:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. S. B. Nagori" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. S. B. Nagori</h3>
+                    <p class="specialty">Cardiologist</p>
+                    <p class="experience">50 years experience overall</p>
+                    <p class="location"><strong>Sarat Bose Road, Kolkata</strong> · Aloka Medicare Pvt. Ltd. (Formerly Calcutta Heart )</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Gynecologist" data-location="Kolkata" data-slots="5:00 PM, 6:30 PM, 8:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Dr. Subidita Chatterjee" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Subidita Chatterjee</h3>
+                    <p class="specialty">MBBS, DGO, DNB - Obstetrics & Gynecology-
+                        Gynecologist, Obstetrician, Infertility Specialist, Laparoscopic Surgeon (Obs & Gyn)</p>
+                    <p class="experience">37 years experience overall</p>
+                    <p class="location"><strong>Salt Lake, Kolkata</strong> · FOR HER Gynae Fertility and Wellness Clinic </p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Gynecologist" data-location="Kolkata" data-slots="3:00 PM, 4:00 PM, 5:00PM, 7:00pm, 9:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Dr. Piya Roy" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Piya Roy</h3>
+                    <p class="specialty">MBBS, MD - Obstetrics & Gynaecology-Gynecologist</p>
+                    <p class="experience">33 years experience overall</p>
+                    <p class="location"><strong>Mukundapur, Kolkata</strong> · Manipal Hospitals (AMRI Hospitals)</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="ENT" data-location="Kolkata" data-slots="9:00 AM, 10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM, 2:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. K.D. Biswas" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. K.D. Biswas</h3>
+                    <p class="specialty">MBBS, Diploma in Otorhinolaryngology (DLO), MS - ENT</p>
+                    <p class="experience">19 years experience overall</p>
+                    <p class="location"><strong>Bhawanipore, Kolkata</strong> · Samaritan Clinic Private Limited</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="ENT" data-location="Kolkata" data-slots="8:00 AM, 9:30 AM, 11:00 AM, 1:00 PM, 3:00 PM, 5:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Soumitra Ghosh" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Soumitra Ghosh</h3>
+                    <p class="specialty">MBBS, Diploma in Otorhinolaryngology (DLO), DNB -ENT/ Otorhinolaryngology</p>
+                    <p class="experience">21 years experience overall</p>
+                    <p class="location"><strong>Mukundapur, Kolkata</strong> · Manipal Hospitals (AMRI Hospitals)</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Eye Doctor" data-location="Kolkata" data-slots="10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM, 2:00 PM, 3:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Dr. Pravin Kumar Singh" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Pravin Kumar Singh</h3>
+                    <p class="specialty">MBBS- Eye Doctor</p>
+                    <p class="experience">26 years experience overall</p>
+                    <p class="location"><strong>New Town, Kolkata</strong> · Sight N Smile</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Dermatologist" data-location="Kolkata" data-slots="2:00 PM, 3:30 PM, 5:00 PM, 6:30 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Dr. Devansi Sarawgi" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Devansi Sarawgi</h3>
+                    <p class="specialty">MBBS, MD - Dermatology , Venereology & Leprosy-Dermatologist</p>
+                    <p class="experience">5 years experience overall</p>
+                    <p class="location"><strong>Park Street, Kolkata</strong> · Oliva Skin & Hair Clinic</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Neurologist" data-location="Kolkata" data-slots="9:00 AM, 10:30 AM, 12:00 PM, 1:30 PM, 3:00 PM, 4:30 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Tridib Chowdhury" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Tridib Chowdhury</h3>
+                    <p class="specialty">DM - Neurology, MD - General Medicine, MBBS - Neurologist</p>
+                    <p class="experience">23 years experience overall</p>
+                    <p class="location"><strong>Mukundapur, Kolkata</strong> · Manipal Hospitals (AMRI Hospitals)</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Psychiatrist" data-location="Kolkata" data-slots="12:00 AM, 1:00 PM, 2:00 PM, 3:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Dr. Devansi Sarawgi" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Rajashree Ray</h3>
+                    <p class="specialty">MBBS, M.D. (Psychiatry) - Psychiatrist</p>
+                    <p class="experience">27 years experience overall</p>
+                    <p class="location"><strong>Salt Lake, Kolkata</strong> · Vedanta Centre for Healing Minds</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Primary Care" data-location="Dhaka" data-slots="10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM, 2:00 PM, 3:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Shoaib Ahmad" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Shoaib Ahmad</h3>
+                    <p class="specialty">MBBS,MPH,CCD (BIRDEM),CCCD (NHF),PG. Dip- Primary Care</p>
+                    <p class="experience">28 years experience overall</p>
+                    <p class="location"><strong>Plot 9, Road 17, Block C, Banani, Dhaka 1213, Bangladesh, Dhaka-1213, Bangladesh</strong> · Praava Health</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Eye Doctor" data-location="Dhaka" data-slots="3:00 PM, 4:00 PM, 5:00 PM, 6:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Muhammad Moniruzzaman" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Muhammad Moniruzzaman</h3>
+                    <p class="specialty">MBBS, FCPS, FACS, FSIO, Vitreo-Retina Specialist & Surgeon - Eye Doctor</p>
+                    <p class="experience">11 years experience overall</p>
+                    <p class="location"><strong>229 Green Rd, Dhaka</strong> · Vision Eye Hospital.</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Dentist" data-location="Dhaka" data-slots="10:00 AM, 11:30 AM, 2:00 PM, 4:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Rahman" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Rahman</h3>
+                    <p class="specialty">Former Dental Resident of NHS,England - Dentist</p>
+                    <p class="experience">9 years experience overall</p>
+                    <p class="location"><strong>House 72, Road 21, Block B,Banani, Dhaka</strong> · Brace Orthodontics & Dental Care</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="ENT" data-location="Dhaka" data-slots="9:00 AM, 10:30 AM, 12:00 PM, 1:30 PM, 3:00 PM, 4:30 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Shaheel Mahmood" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Shaheel Mahmood</h3>
+                    <p class="specialty">Senior Consultant- E.N.T (Ear, Nose and Throat) / Oral and Maxillofacial Surgery- ENT</p>
+                    <p class="experience">25 years experience overall</p>
+                    <p class="location"><strong>229 Green Rd, Dhaka</strong> · Square Hospital</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Dermatologist" data-location="Dhaka" data-slots="9:30 AM, 11:00 AM, 1:00 PM, 2:30 PM, 4:00 PM, 5:30 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. A.K.M. Mahmudul Hoque Khair" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. A.K.M. Mahmudul Hoque Khair</h3>
+                    <p class="specialty">MBBS, BCS (Health), DDV (Dermatologist), MACP, FRSH- Dermatologist</p>
+                    <p class="experience">15 years experience overall</p>
+                    <p class="location"><strong>5-B Shahid Baki Rd, Dhaka</strong> · Peoples Hospital Ltd.</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary">Book Appointment<br></button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Neurologist" data-location="Dhaka" data-slots="8:00 AM, 9:30 AM, 11:00 AM, 1:00 PM, 3:00 PM, 5:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Asst. Prof. Dr. Sanjida Ahmed" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Asst. Prof. Dr. Sanjida Ahmed</h3>
+                    <p class="specialty">MBBS (Dhaka), MD (Pediatric Neurology & Neurodevelopment), MPH (Reproductive & Child Health)- Neurologist</p>
+                    <p class="experience">19 years experience overall</p>
+                    <p class="location"><strong> Shantinagar (Unit 1) House# 11, Shantinagar Paltan, Dhaka</strong> · Popular Diagnostic Centre Ltd</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Cardiologist" data-location="Dhaka" data-slots="4:00 PM, 5:30 PM, 7:00 PM, 8:30 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Md. Mesbah Uddin" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Md. Mesbah Uddin</h3>
+                    <p class="specialty">MBBS, MS (Cardiac Surgery), FACS (USA)- Cardiologist</p>
+                    <p class="experience">17 years experience overall</p>
+                    <p class="location"><strong> 18/F, Bir Uttam Qazi Nuruzzaman Sarak, Dhaka</strong> · Square Hospitals Ltd Ltd</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Psychiatrist" data-location="Dhaka" data-slots="9:00 AM, 10:00 AM, 11:00 AM, 12:00 PM, 1:00 PM, 2:00 PM">
+            <div class="doctor-left">
+                <img src="img/male doctor image.jpg" alt="Dr. Md. Samsul Alam" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Dr. Md. Samsul Alam</h3>
+                    <p class="specialty">MBBS, MCPS, PhD (Psychiatry)- Psychiatrist</p>
+                    <p class="experience">19 years experience overall</p>
+                    <p class="location"><strong> Plot-31, Block-D, Section-11, Dhaka</strong> · Islami Bank Central Hospital | Mirpur</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+                
+            </div>
+        </div>
+        <div class="doctor-card" data-specialty="Gynecologist" data-location="Dhaka" data-slots="2:30 PM, 4:00 PM, 5:30 PM, 7:00 PM">
+            <div class="doctor-left">
+                <img src="img/female doctor image.png" alt="Assoc. Prof. Dr. Farjana Begum" class="doctor-img" />
+                <div class="doctor-info">
+                    <h3 class="doctor-name">Assoc. Prof. Dr. Farjana Begum</h3>
+                    <p class="specialty">MBBS (Dhaka), FCPS (OBGYN)- Gynecologist</p>
+                    <p class="experience">21 years experience overall</p>
+                    <p class="location"><strong> 19 Samsul Alam Sarak, Kakrail, Dhaka</strong> · Aurora Specialized Hospital Ltd.</p>
+                    <div class="reviews">
+                        <div class="star-rating">
+                            <span data-value="1">&#9733;</span>
+                            <span data-value="2">&#9733;</span>
+                            <span data-value="3">&#9733;</span>
+                            <span data-value="4">&#9733;</span>
+                            <span data-value="5">&#9733;</span>
+                        </div>
+                        <span id="review-score">0% | 0 Reviews</span>
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-right">
+                <div class="doctor-actions">
+                    <button class="btn primary book-btn">Book Appointment</button>
+                    <button class="btn secondary"><i class="fa-solid fa-phone"></i> Contact</button>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+     <section class="doctor-list" id="doctorList"></section>
+    
+
+    <!-- main section ends here -->
+
+ <!-- Appointment Modal -->
+    <div id="appointmentModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Choose an Appointment Slot</h2>
+            <div class="slots" id="slotContainer">
+        <!-- Dynamic slots will appear here -->
+            </div>
+            <div class="input-wrapper icon-inside" style="margin-bottom: 1rem;">
+                <label for="modalAppointmentDate" style="font-weight: bold; margin-right: 10px;">Date:</label>
+                <input type="date" id="modalAppointmentDate" />
+            </div>
+        <button id="confirmBooking" class="confirm-btn">Confirm Booking</button>
+        </div>
+    </div>
+
+<!-- Contact Modal -->
+    <div id="contactModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-contact-btn">&times;</span>
+            <h2>Contact Information</h2>
+            <p><strong>Phone:</strong> <span id="contactPhone">+880123456789</span></p>
+            <p><strong>Email:</strong> <span id="contactEmail">doctor@example.com</span></p>
+        </div>
+    </div>
+  
+</body>
+</html>

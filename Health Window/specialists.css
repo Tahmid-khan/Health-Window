@@ -1,0 +1,450 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    outline: none;
+}
+
+.html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-color:  #0c3b82;
+    --primary-color:white;
+    --main-font: 'inter', 'Segoe UI', 'sans-serif';
+}
+
+body {
+    background: var(--primary-color)
+    
+}
+
+/* header starts here */
+
+
+
+.head-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 5rem;
+    font-size: 1.2rem;
+    background: var(--main-color);
+}
+.head-container.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0c3b82;
+    z-index: 1000;
+    padding: 0.3rem 5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.top-bar a {
+    color: var(--primary-color);
+    font-family: 'pacifico', 'cursive';
+    font-size: 48px;
+    height: 70px;
+    width: 70px;
+    
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar li {
+    list-style: none;
+    padding: 0 20px;
+
+}
+
+.nav-bar li a {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 18px;
+    font-family: var(--main-font);
+    transition: all 0.3s ease-in-out;
+    border: 2px solid white;
+    border-radius: 35px;
+    cursor: pointer;
+    padding: 6px 30px;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav-bar li a:hover {
+    background-color: blue;
+    color: var(--primary-color);
+}
+/* header ends here */
+
+/* search-bar starts here */
+#form {
+    margin-top : 2rem;
+    
+}
+
+.search-doctor {
+    display: flex;
+    gap: 15px;
+    margin: 15px auto;
+    max-width: 80%;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding-top: 0px;
+    border: 1px solid #ddd;
+    
+}
+.search-doctor select:invalid,
+.search-doctor select option[disabled] {
+    color: #999
+}
+.search-doctor input[type="date"] {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+    padding: 8px;
+    background-color: transparent;
+    color: #333;
+}
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.game {
+    margin-top: 1rem;
+}
+
+.icon-inside i {
+    color: #666;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+
+.input-wrapper select {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+    padding: 8px;
+    background: transparent;
+    appearance: none;
+    background: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right center;
+    background-size: 14px;
+    padding-right: 25px;
+    min-width: 50px;
+  
+}
+.search-btn {
+    padding: 12px 18px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: gray;
+}
+/* search-bar ends here */
+
+/* Doctors list section starts here */
+
+.doctor-list {
+  max-width: 80%;
+  margin: 5rem auto;
+  padding: 0 1rem;
+}
+
+.doctor-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.doctor-left {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+
+.doctor-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.doctor-info {
+  flex: 1;
+}
+.doctor-info a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.doctor-name {
+  color: #0077cc;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.specialty,
+.experience,
+.location {
+  margin: 2px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.reviews {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.star-rating span {
+  font-size: 1.2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.star-rating span.selected {
+  color: #ffc107;
+}
+
+#review-score {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.doctor-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  min-width: 200px;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.doctor-right .doctor-actions {
+  color: green;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap:5px
+}
+
+.btn {
+  display: block;
+  width: 180px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.btn.primary {
+  background-color: #00aaff;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #008ecc;
+}
+
+.btn.secondary {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #0077cc;
+}
+
+.btn.secondary:hover {
+  background-color: #f2f2f2;
+}
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.slots {
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.slot-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.slot-btn.selected {
+  background-color: #28a745;
+}
+
+.confirm-btn {
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Contact Modal Specific Styling */
+#contactModal .modal-content {
+  position: relative;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+}
+
+#contactModal h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+#contactModal p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+#contactModal strong {
+  display: inline-block;
+  width: 80px;
+}
+#modalAppointmentDate {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #007bff; /* Blue like slot buttons */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#modalAppointmentDate:focus {
+  outline: none;
+  background-color:  #28a745;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.input-wrapper label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+
+.close-contact-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+
+.close-contact-btn:hover {
+  color: red;
+}
+
+/* availability checking */
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .doctor-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doctor-right {
+    text-align: left;
+    width: 100%;
+  }
+}
